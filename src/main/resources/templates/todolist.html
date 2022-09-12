@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:font-style="http://www.w3.org/1999/xhtml"
+      xmlns:bgcolor="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>To-Do-List</title>
+</head>
+<body>
+<div>
+    <h1><b>To-Do-List</b></h1>
+    <p></p>
+    <form
+            th:object="${newTask}"
+            th:action="@{/todolist}"
+            method="post">
+        <p>Add new task:
+            <input
+                    type="text"
+                    th:field="*{task}"
+            />
+        </p>
+        <p>
+            <button type="submit">Schedule</button>
+        </p>
+    </form>
+
+    <table th:unless="${list.isEmpty()}">
+        <thead>
+        <tr style="background-color:rgba(245, 155, 0, 0.6);">
+            <th>ID</th>
+            <th>Task</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr style="font-style: italic;"
+            th:each="t, iterator : ${list}"
+            th:styleappend="${!iterator.odd ? 'background-color:rgba(245, 155, 0, 0.2);' : 'background-color:normal;'}">
+
+            <td th:styleappend="${t.status.name() == 'DONE' ? 'text-decoration:line-through' : 'text-decoration:auto'}"
+                th:text="${t.id}"></td>
+            <td th:styleappend="${t.status.name() == 'DONE' ? 'text-decoration:line-through' : 'text-decoration:auto'}"
+                th:text="${t.task}"></td>
+            <td>
+                <form action="#" th:action="@{'/todolist/{id}'(id=${t.id})}" th:method="patch">
+                    <button type="submit" id="patchButton">Mark DONE</button>
+                </form>
+            </td>
+            <td>
+                <form action="#" th:action="@{'/todolist/{id}'(id=${t.id})}" th:method="delete">
+                    <button type="submit" id="deleteButton">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <form action="#" th:action="@{/todolist}" th:method="delete">
+        <button type="submit" id="clearButton">Clear To-Do-List</button>
+    </form>
+
+</div>
+</body>
+</html>
