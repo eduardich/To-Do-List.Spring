@@ -23,5 +23,5 @@ __Приложение состоит из:__
 3. Запустить выполнение `ToDoList-1.0.jar`
 
 ### Демонстрация взаимодействия с базой данных
-![demo](./demonstration.gif "Demo") 
+![demo](./demonstration.gif "Demonstration") 
  
