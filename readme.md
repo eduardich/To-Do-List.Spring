@@ -20,7 +20,8 @@ __Приложение состоит из:__
       `spring.datasource.url:`  
       `spring.datasource.username:`  
       `spring.datasource.password:`
-3. Запустить выполнение `ToDoList-1.0.jar`
+3. Создать в MySQL схему с названием `to_do_list`
+4. Запустить выполнение `ToDoList-1.0.jar`
 
 ### Демонстрация взаимодействия с базой данных
 ![demo](./demonstration.gif "Demonstration") 
